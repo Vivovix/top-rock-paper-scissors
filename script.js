@@ -5,13 +5,13 @@ function getComputerChoice() {
     if (x == 0) {
         return getComputerChoice();
     }
-    if (x < 33) {
+    if (x <= 32) {
         return "rock";
     }
     if (x > 32 && x < 67) {
         return "paper";
     }
-    if (x > 67) {
+    if (x >= 67) {
         return "scissors"
     } 
 }
