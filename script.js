@@ -3,7 +3,7 @@
 function getComputerChoice() {
     let random = Math.floor(Math.random() * 100);
     console.log(random);
-    if (random == 0) {
+    if (random === 0) {
         return getComputerChoice();
     }
     if (random <= 32) {
@@ -19,7 +19,7 @@ function getComputerChoice() {
 
 function getPlayerChoice() {
     let choice = prompt("What will you pick?")
-    if (choice == null) { //fix player pressing cancel
+    if (choice === null) { //fix player pressing cancel
         alert("No good! Only 'Rock', 'Paper' and 'Scissors' allowed!");
         return getPlayerChoice();
     } else {
@@ -32,17 +32,17 @@ function getPlayerChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
-    if (playerSelection == computerSelection) {
+    if (playerSelection === computerSelection) {
         return 0;
-    } if (playerSelection == "rock") {
+    } if (playerSelection === "rock") {
         return computerSelection == "paper" ? false
         : true;
-    } if (playerSelection == "paper") {
+    } if (playerSelection === "paper") {
         return computerSelection == "scissors" ? false
-        : true
-    } if (playerSelection == "scissors") {
-        return computerSelection == "rock" ? false
-        : true
+        : true;
+    } if (playerSelection === "scissors") {
+        return computerSelection === "rock" ? false
+        : true;
     }
 }
 
@@ -54,9 +54,10 @@ function game() {
         let playerSelection = getPlayerChoice();
         let computerSelection = getComputerChoice();
         console.log(`You picked ${playerSelection}. The computer picked ${computerSelection}.`);
-        if (playRound(playerSelection, computerSelection) == 0) {
+        console.log(`Result of the function 'playround is: ${playRound(playerSelection, computerSelection)}`);
+        if (playRound(playerSelection, computerSelection) === 0) {
             console.log(`You both picked ${playerSelection}! No winner!`)
-        } else if (playRound(playerSelection, computerSelection) == true) {
+        } else if (playRound(playerSelection, computerSelection) === true) {
             console.log("You win!");
             playerScore++;
         } else {
@@ -66,7 +67,5 @@ function game() {
     }
     console.log(`You won ${playerScore} rounds. The computer won ${computerScore} rounds.`);
 }
-
-
 
 game();
